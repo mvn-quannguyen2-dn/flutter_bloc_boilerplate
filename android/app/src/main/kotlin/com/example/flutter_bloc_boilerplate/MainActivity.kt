@@ -10,7 +10,7 @@ class MainActivity : FlutterActivity() {
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
         GeneratedPluginRegistrant.registerWith(flutterEngine)
 
-        // MethodChannel get type productFlavors
+        // Note: MethodChannel get type productFlavors
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "flavor").setMethodCallHandler {
                 _,
                 result ->
