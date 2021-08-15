@@ -1,9 +1,12 @@
+// Cores
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// Services
+import 'package:flutter_bloc_boilerplate/services/flavor_settings_service.dart';
 
-void main() {
+Future<void> main() async {
   // NOTE: This is required for accessing the method channel before runApp().
   WidgetsFlutterBinding.ensureInitialized();
+  await FlavorSettingsService.setFlavorSettings();
   runApp(MyApp());
 }
 
@@ -16,9 +19,7 @@ class MyApp extends StatelessWidget {
       home: TextButton(
         child: Text('Show Flavor'),
         onPressed: () async {
-          final flavor = await const MethodChannel('flavor')
-              .invokeMethod<String>('getFlavor');
-          print(flavor);
+          print(FlavorSettingsService.getFlavorSettings().apiBaseUrl);
         },
       ),
     );
