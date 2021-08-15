@@ -6,4 +6,5 @@ class ApiResource {
   static const post = 'POST';
   static const put = 'PUT';
   static const delete = 'DELETE';
+  static const download = 'DOWNLOAD';
 }
