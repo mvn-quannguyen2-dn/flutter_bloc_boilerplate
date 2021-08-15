@@ -9,7 +9,7 @@ import 'package:flutter_bloc_boilerplate/app.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('Start App', (WidgetTester tester) async {
+  testWidgets('Start App', (tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(App());
   });

@@ -1,0 +1,86 @@
+include: package:pedantic/analysis_options.yaml
+
+analyzer:
+  # You must define the rules at [linter: rules:]
+  # Then, you can define the level of rule at [analyzer: errors:]
+
+  # Note: The rule will not affect if you only define in [analyzer: error:]
+  # Rule levels: info, warning, error
+
+  # Example:
+  # analyzer:
+  #   errors:
+  #     unnecessary_this: warning
+  # linter:
+  #   rules:
+  #     - unnecessary_this
+
+  # Read here for more details
+  # https://dart.dev/guides/language/analysis-options#the-analysis-options-file
+  strong-mode:
+    implicit-casts: true # default
+    implicit-dynamic: true # default
+
+linter:
+  rules:
+    # You must define all rules here
+    - annotate_overrides
+    - avoid_print
+    - avoid_null_checks_in_equality_operators
+    - avoid_relative_lib_imports
+    - avoid_types_on_closure_parameters
+    - avoid_unused_constructor_parameters
+    - avoid_void_async
+    - avoid_empty_else
+    - avoid_init_to_null
+    - avoid_unnecessary_containers
+    - await_only_futures
+    - always_declare_return_types
+    - camel_case_extensions
+    - camel_case_types
+    - cancel_subscriptions
+    - close_sinks
+    - constant_identifier_names
+    - control_flow_in_finally
+    - directives_ordering
+    - empty_statements
+    - empty_constructor_bodies
+    - file_names
+    - hash_and_equals
+    - implementation_imports
+    - non_constant_identifier_names
+    - no_duplicate_case_values
+    - package_api_docs
+    - package_names
+    - package_prefixed_library_names
+    - prefer_adjacent_string_concatenation
+    - prefer_single_quotes
+    - prefer_final_in_for_each
+    - prefer_final_fields
+    - prefer_final_locals
+    - prefer_for_elements_to_map_fromIterable
+    - prefer_if_null_operators
+    - prefer_if_elements_to_conditional_expressions
+    - prefer_initializing_formals
+    - prefer_is_empty
+    - prefer_is_not_empty
+    - prefer_null_aware_operators
+    - prefer_spread_collections
+    - prefer_typing_uninitialized_variables
+    - test_types_in_equals
+    - throw_in_finally
+    - type_init_formals
+    - sort_child_properties_last
+    - unnecessary_brace_in_string_interps
+    - unnecessary_getters_setters
+    - unnecessary_new
+    - unnecessary_statements
+    - unnecessary_this
+    - unnecessary_await_in_return
+    - unawaited_futures
+    - unnecessary_const
+    - use_function_type_syntax_for_parameters
+    - unnecessary_null_aware_assignments
+    - unnecessary_null_in_if_null_operators
+    - unnecessary_string_interpolations
+    - use_rethrow_when_possible

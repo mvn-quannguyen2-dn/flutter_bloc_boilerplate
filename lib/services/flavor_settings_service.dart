@@ -20,7 +20,7 @@ class FlavorSettingsService {
         flavorSettings = FlavorSettings.production();
         break;
       default:
-        throw Exception("Unknown flavor: $flavor");
+        throw Exception('Unknown flavor: $flavor');
     }
   }
 
