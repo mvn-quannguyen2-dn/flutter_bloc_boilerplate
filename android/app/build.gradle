@@ -28,6 +28,8 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     compileSdkVersion 30
 
+    flavorDimensions "app"
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -39,6 +41,26 @@ android {
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+    }
+
+    productFlavors {
+        development {
+            dimension "app"
+            resValue "string", "app_name", "[DEV] Flutter Bloc Boilerplate!"
+            applicationIdSuffix ".dev"
+           
+        }
+
+        staging {
+            dimension "app"
+            resValue "string", "app_name", "[STG] Flutter Bloc Boilerplate!"
+            applicationIdSuffix ".stg"
+        }
+
+        production {
+            dimension "app"
+            resValue "string", "app_name", "Flutter Bloc Boilerplate!"
+        }
     }
 
     buildTypes {

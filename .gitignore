@@ -30,7 +30,12 @@
 .pub-cache/
 .pub/
 /build/
-.vscode/*
+
+# Visual Studio Code related
+.classpath
+.project
+.settings/
+.vscode/
 
 # Web related
 lib/generated_plugin_registrant.dart
