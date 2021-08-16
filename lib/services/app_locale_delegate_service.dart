@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 // Utils
 import 'package:flutter_bloc_boilerplate/utils/helpers/index.dart';
 
-class AppLocaleDelegate extends LocalizationsDelegate<TranslateHelper> {
-  const AppLocaleDelegate();
+class AppLocaleDelegateService extends LocalizationsDelegate<TranslateHelper> {
+  const AppLocaleDelegateService();
 
   @override
   bool isSupported(Locale locale) {
@@ -19,5 +19,5 @@ class AppLocaleDelegate extends LocalizationsDelegate<TranslateHelper> {
   }
 
   @override
-  bool shouldReload(AppLocaleDelegate old) => false;
+  bool shouldReload(AppLocaleDelegateService old) => false;
 }

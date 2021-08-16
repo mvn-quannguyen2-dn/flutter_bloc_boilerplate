@@ -2,16 +2,15 @@
 import 'package:flutter/material.dart';
 
 class AppLanguageHelper {
-  ///Default Language
+  /// Default Language
   static Locale defaultLanguage = Locale('en');
 
-  ///List Language support in Application
+  /// List Language support in Application
   static List<Locale> supportLanguage = [
     Locale('en'),
     Locale('ja'),
   ];
 
-  ///Singleton factory
   static final AppLanguageHelper _instance = AppLanguageHelper._internal();
 
   factory AppLanguageHelper() {

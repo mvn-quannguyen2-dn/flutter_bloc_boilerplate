@@ -1,5 +1,8 @@
+// Cores
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_boilerplate/utils/helpers/multi_language/app_locale_delegate.dart';
+// Services
+import 'package:flutter_bloc_boilerplate/services/app_locale_delegate_service.dart';
+// Utils
 import 'package:flutter_bloc_boilerplate/utils/helpers/index.dart';
 
 class TranslateHelper {
@@ -12,7 +15,7 @@ class TranslateHelper {
   }
 
   static const LocalizationsDelegate<TranslateHelper> delegate =
-      AppLocaleDelegate();
+      AppLocaleDelegateService();
 
   late Map<String, String> _localizedStrings;
 
