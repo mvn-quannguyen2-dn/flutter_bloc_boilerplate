@@ -15,4 +15,12 @@ class SharedPreferencesServices {
   Future<void> initPrefInstance() async {
     prefInstance = await SharedPreferences.getInstance();
   }
+
+  Future<void> setToken(String token) async {
+    await prefInstance.setString('token', token);
+  }
+
+  String getToken() {
+    return prefInstance.getString('token') ?? '';
+  }
 }
