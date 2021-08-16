@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   # Dio
   dio: ^4.0.0
   # Connectivity
@@ -54,6 +56,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/locale/
 
   fonts:
     - family: Roboto
