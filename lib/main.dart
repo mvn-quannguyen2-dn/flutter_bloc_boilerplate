@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 // App
 import 'package:flutter_bloc_boilerplate/app.dart';
-// Services
-import 'package:flutter_bloc_boilerplate/services/flavor_settings_service.dart';
-import 'package:flutter_bloc_boilerplate/services/shared_preferences_service.dart';
 // Utils
 import 'package:flutter_bloc_boilerplate/utils/constants/index.dart';
 import 'package:flutter_bloc_boilerplate/utils/helpers/index.dart';
@@ -37,10 +34,6 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> main() async {
-  // NOTE: This is required for accessing the method channel before runApp().
-  WidgetsFlutterBinding.ensureInitialized();
-  await FlavorSettingsService.setFlavorSettings();
-  await SharedPreferencesServices().initPrefInstance();
   Bloc.observer = AppBlocObserver();
   runApp(App());
 }

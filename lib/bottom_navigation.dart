@@ -5,6 +5,9 @@ import 'package:flutter_bloc_boilerplate/blocs/app_bloc.dart';
 import 'package:flutter_bloc_boilerplate/blocs/export_blocs.dart';
 // Utils
 import 'package:flutter_bloc_boilerplate/utils/helpers/index.dart';
+// Pages
+import 'package:flutter_bloc_boilerplate/views/pages/home/home_page.dart';
+import 'package:flutter_bloc_boilerplate/views/pages/settings/settings_page.dart';
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key? key}) : super(key: key);
@@ -52,7 +55,8 @@ class _BottomNavigationState extends State<BottomNavigation>
       body: IndexedStack(
         index: selectedIndex,
         children: <Widget>[
-          //
+          HomePage(),
+          SettingsPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
