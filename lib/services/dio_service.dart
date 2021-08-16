@@ -1,12 +1,10 @@
 // Cores
 import 'dart:io';
 import 'package:dio/dio.dart';
-// Models
-import 'package:flutter_bloc_boilerplate/models/dio_param.dart';
 // Services
 import 'package:flutter_bloc_boilerplate/services/flavor_settings_service.dart';
 // Utils
-import 'package:flutter_bloc_boilerplate/utils/constants/api_resource.dart';
+import 'package:flutter_bloc_boilerplate/utils/constants/type_request_api.dart';
 
 class DioService {
   static final DioService _singleton = DioService._internal();
@@ -19,13 +17,21 @@ class DioService {
 
   late Dio dio;
 
-  Future dioService(DioParam dioParam) async {
+  Future<dynamic> requestHttpClient(DioParam dioParam) async {
     // Validation parameter
-    assert(dioParam.fullPath.isNotEmpty && dioParam.path.isNotEmpty);
     assert(
-      dioParam.method == ApiResource.download && dioParam.paramDownload == null,
-      dioParam.method == ApiResource.upload && dioParam.paramUpload == null,
+      dioParam.fullPath.isNotEmpty && dioParam.path.isEmpty,
+      dioParam.fullPath.isEmpty && dioParam.path.isNotEmpty,
     );
+    if (dioParam.method == TypeRequestApi.download ||
+        dioParam.method == TypeRequestApi.upload) {
+      assert(
+        dioParam.method == TypeRequestApi.download &&
+            dioParam.paramDownload != null,
+        dioParam.method == TypeRequestApi.upload &&
+            dioParam.paramUpload != null,
+      );
+    }
 
     final headerDefault = <String, dynamic>{
       'Accept': 'application/json',
@@ -52,7 +58,7 @@ class DioService {
     Response response;
 
     switch (dioParam.method) {
-      case ApiResource.download:
+      case TypeRequestApi.download:
         response = await dio.download(
           pathRequest,
           dioParam.paramDownload!.savePathDownload,
@@ -67,7 +73,7 @@ class DioService {
           cancelToken: dioParam.paramDownload!.cancelTaskUpDownload,
         );
         break;
-      case ApiResource.upload:
+      case TypeRequestApi.upload:
         response = await dio.request(
           pathRequest,
           data: dioParam.body,
@@ -110,4 +116,48 @@ class DioService {
   Future<DioError> errorInterceptor(DioError err) async {
     return err;
   }
+}
+
+class DioParam {
+  String method;
+  String path;
+  String fullPath;
+  Map<String, dynamic> header;
+  Map<String, dynamic> body;
+  Map<String, dynamic> queryParameters;
+  DioParamUpDownload? paramDownload;
+  DioParamUpload? paramUpload;
+
+  DioParam({
+    this.method = TypeRequestApi.get,
+    this.path = '',
+    this.fullPath = '',
+    this.header = const {},
+    this.body = const {},
+    this.queryParameters = const {},
+    this.paramDownload,
+    this.paramUpload,
+  });
+}
+
+class DioParamUpDownload {
+  String savePathDownload;
+  Function(int received, int total) onReceiveProgress;
+  CancelToken cancelTaskUpDownload;
+
+  DioParamUpDownload({
+    required this.onReceiveProgress,
+    required this.cancelTaskUpDownload,
+    required this.savePathDownload,
+  });
+}
+
+class DioParamUpload {
+  Function(int received, int total) onReceiveProgress;
+  CancelToken cancelTaskUpDownload;
+
+  DioParamUpload({
+    required this.onReceiveProgress,
+    required this.cancelTaskUpDownload,
+  });
 }
