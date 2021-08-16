@@ -13,7 +13,7 @@ class AppBlocObserver extends BlocObserver {
   @override
   void onCreate(BlocBase bloc) {
     super.onCreate(bloc);
-    LoggerHelper.log('BLOC CREATE', bloc);
+    LoggerHelper.log('BLOC CREATE', bloc.state);
   }
 
   @override
