@@ -63,7 +63,9 @@ class _SettingsPageState extends State<SettingsPage> {
               padding: EdgeInsets.all(16),
               child: ElevatedButton(
                 onPressed: changeLanguage,
-                child: Text('Change Language'),
+                child: Text(
+                  TranslateHelper.of(context).translate('change_language'),
+                ),
               ),
             )
           ],
