@@ -9,8 +9,7 @@ class RouteApp {
 
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // Code Sample
-      // case sample:
+      // Case sample:
       //   return MaterialPageRoute(
       //     builder: (context) {
       //       return Sample();
