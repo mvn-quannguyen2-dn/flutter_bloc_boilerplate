@@ -3,5 +3,5 @@ class AppImages {
   static const _path = 'assets/images';
 
   // background
-  static const onboardingBackground = '$_path/background.jpg';
+  static const weather = '$_path/weather.png';
 }

@@ -5,6 +5,7 @@ import 'package:flutter_bloc_boilerplate/blocs/app_bloc.dart';
 import 'package:flutter_bloc_boilerplate/blocs/export_blocs.dart';
 // Utils
 import 'package:flutter_bloc_boilerplate/utils/helpers/index.dart';
+import 'package:flutter_bloc_boilerplate/utils/constants/index.dart';
 // Pages
 import 'package:flutter_bloc_boilerplate/views/pages/home/home_page.dart';
 import 'package:flutter_bloc_boilerplate/views/pages/settings/settings_page.dart';
@@ -73,10 +74,12 @@ class _BottomNavigationState extends State<BottomNavigation>
         iconSize: 30,
         selectedFontSize: 20,
         unselectedFontSize: 15,
-        selectedItemColor: Theme.of(context).primaryColor,
+        selectedItemColor: context.colors.background,
+        unselectedItemColor: context.colors.background,
         currentIndex: selectedIndex,
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: true,
+        backgroundColor: context.colors.accent,
         onTap: _onItemTapped,
       ),
     );
