@@ -24,7 +24,7 @@ class WeatherCard extends StatelessWidget {
         width: double.infinity,
         height: 200,
         child: Padding(
-          padding: const EdgeInsets.all(30.0),
+          padding: const EdgeInsets.all(20.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

@@ -7,6 +7,7 @@ class AppBloc {
   static final applicationBloc = ApplicationBloc();
   static final languageBloc = LanguageBloc();
   static final appStateBloc = AppStateBloc();
+  static final homeBloc = HomeBloc();
 
   static final List<BlocProvider> providers = [
     BlocProvider<ApplicationBloc>(
@@ -18,12 +19,16 @@ class AppBloc {
     BlocProvider<AppStateBloc>(
       create: (context) => appStateBloc,
     ),
+    BlocProvider<HomeBloc>(
+      create: (context) => homeBloc,
+    ),
   ];
 
   static void dispose() {
     applicationBloc.close();
     languageBloc.close();
     appStateBloc.close();
+    homeBloc.close();
   }
 
   /// Singleton factory
