@@ -57,7 +57,7 @@ class WeatherHourlyForecasrs {
 }
 
 class Temperature {
-  int? value;
+  double? value;
   String? unit;
   int? unitType;
 

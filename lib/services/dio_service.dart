@@ -91,6 +91,12 @@ class DioService {
         break;
     }
 
+    response = await dio.request(
+      pathRequest,
+      data: dioParam.body,
+      queryParameters: dioParam.queryParameters,
+    );
+
     return response;
   }
 
@@ -98,23 +104,33 @@ class DioService {
     return dio
       ..interceptors.add(
         InterceptorsWrapper(
-          onRequest: (options, _) => requestInterceptor(options),
-          onResponse: (response, _) => responseInterceptor(response),
-          onError: (dioError, _) => errorInterceptor(dioError),
+          onRequest: (options, handler) => requestInterceptor(options, handler),
+          onResponse: (response, handler) =>
+              responseInterceptor(response, handler),
+          onError: (dioError, handler) => errorInterceptor(dioError, handler),
         ),
       );
   }
 
-  Future<RequestOptions> requestInterceptor(RequestOptions options) async {
-    return options;
+  Future<void> requestInterceptor(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
+    return handler.next(options);
   }
 
-  Future<Response> responseInterceptor(Response response) async {
-    return response;
+  Future<void> responseInterceptor(
+    Response response,
+    ResponseInterceptorHandler handler,
+  ) async {
+    return handler.next(response);
   }
 
-  Future<DioError> errorInterceptor(DioError err) async {
-    return err;
+  Future<void> errorInterceptor(
+    DioError e,
+    ErrorInterceptorHandler handler,
+  ) async {
+    return handler.next(e);
   }
 }
 

@@ -12,6 +12,6 @@ class WeatherApi {
         fullPath: ApiResource.urlGetWeather,
       ),
     );
-    return WeatherHourlyForecasrs.fromJson(dataWaether);
+    return WeatherHourlyForecasrs.fromJson(dataWaether.data.first);
   }
 }
